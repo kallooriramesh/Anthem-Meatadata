@@ -7,17 +7,7 @@
     }
     </script>
     
-    <script>
-    var stringval='{!response}';
-    
-    alert({!response}')
-          if(stringval != '')
-    {
-        alert('Please select at least one event');
-    }
-    
-    
-    </script>
+   
     <script>
     function hasEvent(eventid)
     {
@@ -60,12 +50,11 @@
                 </apex:outputLabel>&nbsp;&nbsp;
                 <apex:selectList value="{!selectedEvent}" style="align:cetner; width:200px"  multiselect="false" size="1"  styleClass="slds-input slds-combobox__input">
                     <apex:selectOptions value="{!Events}"   />
-                    <apex:actionSupport event="onchange"  action="{!setInviteeContacts}" />
                 </apex:selectList>              
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="slds-no-flex"> 
                     <apex:outputPanel >
-                        <apex:commandButton value="Invite" action="{!invite}" rerender="frm,msg" styleClass="slds-button slds-button_neutral"/>
+                        <apex:commandButton value="Invite" action="{!invite}" rerender="msg" styleClass="slds-button slds-button_neutral"/>
                     </apex:outputPanel>
                     <apex:CommandButton Value="Back to Contacts" Action="{!save}" styleClass="slds-button slds-button_neutral"/>
                 </div>

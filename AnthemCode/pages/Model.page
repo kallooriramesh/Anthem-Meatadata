@@ -1,4 +1,4 @@
-<apex:page standardController="Contact" recordSetVar="contacts" extensions="InvitetoEventCtrl" >
+<apex:page standardController="Contact" recordSetVar="contacts" extensions="InvitetoEventCtrl1" >
     
     <apex:slds />
     <apex:form id="frm" >
