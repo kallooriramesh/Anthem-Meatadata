@@ -1,0 +1,11 @@
+.THIS .error {
+    background: #a01c1c;
+    color: white;
+    font-weight: normal;
+}
+
+.THIS .uiMessage.confirm{
+    background: #155a15;
+    color: white;
+    font-weight: normal;
+}

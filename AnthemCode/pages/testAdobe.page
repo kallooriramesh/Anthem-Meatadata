@@ -1,0 +1,23 @@
+<apex:page controller="TestAdobe" >
+  <apex:form >
+  
+  <apex:commandButton value="Login" action="{!login}"/>
+{!loginSession}
+{!eventResponse}
+{!logoutResponse}
+Search Event
+<apex:inputText value="{!SearchStr}" label="Search"/>
+<apex:commandButton value="Search" action="{!Search}"/>
+<!--  <apex:commandButton value="Create Event" action="{!createEvent}"/>
+  
+  <apex:commandButton value="Logout" action="{!logout}"/><br/>
+  logoutResponse::{!logoutResponse}<br/>
+  loginReqUrl :: {!loginReqUrl} <br/>
+  loginResponse::{!loginResponse}<br/>
+  Session:::{!loginSession}<br/>
+  eventURL::{!eventURL}<br/>
+  eventResponse::{!eventResponse}<br/>
+  
+  accessToken :: {!accessToken}-->
+  </apex:form>
+</apex:page>

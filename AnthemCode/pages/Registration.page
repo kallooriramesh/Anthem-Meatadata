@@ -1,0 +1,196 @@
+<apex:page standardController="EventApi__Attendee__c" extensions="AttendeeRegistrationController" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" showHeader="false"  docType="html-5.0" sidebar="false">    
+  <apex:slds />
+    
+    <apex:composition template="CPBase__template">
+        <apex:define name="pageTitle">
+            Event Registration Page  
+        </apex:define>
+         <apex:define name="title">
+             <apex:insert name="pageTitle"/>
+        </apex:define>
+        
+        <apex:define name="styles">
+            <apex:insert name="pageStyles"/>
+        </apex:define>
+        
+         <apex:define name="supernavLeft">
+            <apex:insert name="pageSupernavLeft"/>
+        </apex:define>
+        
+        <apex:define name="navbarOverried">
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(siteNav.name))}">
+            <OrderApi:navlist name="{!siteNav.name}"
+                              ulStyleClass="nav navbar-nav navbar-right open" contactId="{!con.Id}"/>
+            </apex:outputPanel>
+        </apex:define>
+      
+       <!-- <apex:define name="supernavList">
+            <apex:outputPanel layout="none" rendered="{!$currentpage.parameter.ispreview !='true'}">
+            <orderapi:portal_shopping_cart />
+            </apex:outputPanel>
+        </apex:define> -->
+         <apex:define name="main">
+             <apex:slds /> 
+    <apex:form id="frm" > 
+            
+        <apex:pageMessages id="msg"></apex:pageMessages>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                       
+                    </div>
+                    <div class="slds-media__body" style="text-align: center;">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" >
+                                <span class="slds-text-heading_small" style="font-size: 80%;"><b>{!evnt.name} Registration Form</b></span>
+                            </a>
+                        </h2>
+                    </div>                  
+                </header>
+            </div>
+            <div class="slds-card__header slds-grid " style="Padding-left: 15%;">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                           
+                    </div>
+                    <div class="slds-media__body slds-align_absolute-center">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" >
+                                <span class="slds-text-heading_small" style="font-size: 80%;"><b>Event Information</b> </span>
+                            </a>
+                        </h2>
+                    </div>                  
+                </header>
+            </div>
+             <br/>
+            <apex:outputPanel >
+                <div class="slds-grid" style="Padding-left: 15%;">
+                    <div class="slds-col">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" style="font-size: 120%;" for="text-input-id-1"><b>Event Name</b></label>
+                            <div class="slds-form-element__control">
+                                <apex:outputfield value="{!evnt.name}" styleclass="slds-output" style="font-size: 100%;" /> 
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" style="font-size: 120%;" for="text-input-id-1"><b>Speakers</b></label>
+                            <div class="slds-form-element__control">
+                                <apex:outputfield value="{!evnt.EventApi__Speakers_HTML__c}" style="font-size: 100%; width: 40%;" styleclass="slds-output" /> 
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="slds-col">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" style="font-size: 120%;" for="text-input-id-1"><b>Event Start Date</b></label>
+                            <div class="slds-form-element__control">
+                                <apex:outputfield value="{!evnt.EventApi__Start_Date__c}" style="font-size: 100%;" styleclass="slds-output" /> 
+                            </div>
+                        </div> 
+                        <br/>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" style="font-size: 120%;" for="text-input-id-1"><b>Event End Date</b></label>
+                            <div class="slds-form-element__control">
+                                <apex:outputfield value="{!evnt.EventApi__End_Date__c}" style="font-size: 100%;" styleclass="slds-output" /> 
+                            </div>
+                        </div> 
+                    </div>
+                </div>  
+            </apex:outputPanel>
+            <apex:outputPanel id="op2"  >
+                <div class="slds-card__header slds-grid"  style="Padding-left: 15%;">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate" >
+                        <div class="slds-media__figure">
+                        </div>
+                        <div class="slds-media__body" >
+                            <h2>
+                                <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" >
+                                    <span class="slds-text-heading_small" style="font-size: 80%;"><b>Registration Information</b> </span>
+                                </a>
+                            </h2>
+                        </div>                  
+                    </header>
+                </div>
+                <div class="slds-grid" style="Padding-left: 15%;">
+                  <apex:pageBlock >
+                        <apex:pageBlockSection columns="2">  
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+
+                                <apex:inputfield value="{!attnde.EventApi__Full_Name__c}" style="width:70%;"/>
+
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <apex:inputfield value="{!attnde.EventApi__Preferred_Email__c}" style="width:70%;" /> 
+                            </div>
+                        </div> 
+                 </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </div>  
+            </apex:outputPanel>           
+                <div class="slds-card__header slds-grid" style="Padding-left: 15%;">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                        </div>
+                        <div class="slds-media__body">
+                            <h2>
+                                <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" >
+                                    <span class="slds-text-heading_small" style="font-size: 80%;"><b>Additional Information</b> </span>
+                                </a>
+                            </h2>
+                        </div>                  
+                    </header>
+                </div>
+                <div class="slds-grid" style="Padding-left: 15%;">
+                    <apex:pageBlock >
+                        <apex:pageBlockSection columns="2">
+                   <apex:repeat value="{!$ObjectType.EventApi__Attendee__c.fieldsets.Registration}" var="f">
+                           <apex:inputField value="{!attnde[f.fieldPath]}" style="width:70%;"/>
+             </apex:repeat>
+                            </apex:pageBlockSection>
+            </apex:pageBlock>
+                        <br/>   
+                    </div>
+                
+            <div class="slds-form-element__row" style="Padding-left: 13.5%;">
+                <div class="slds-form-element">
+                    <label class="slds-checkbox">
+                        &nbsp;&nbsp;  &nbsp;&nbsp;   <apex:inputcheckbox value="{!attnde.Ischecked__c}" styleclass="slds-input"  >
+                        </apex:inputcheckbox> 	
+                        <span class="slds-checkbox--faux"></span>
+                        <span class="slds-form-element__label" style="font-size: 120%;"><b>Register with above details</b></span>
+                    </label>
+                </div>
+            </div> 
+            <apex:outputPanel >
+                <div class="slds-no-flex"  align="right"> 
+                    <apex:CommandButton Value="Register" Action="{!save}" style="margin-right:50%;color: white!important;" styleClass="slds-button slds-button_neutral btn btn-success"/>
+                </div>
+            </apex:outputPanel>
+            <br/>
+        </article>
+ 
+    </apex:form>
+    
+        </apex:define> 
+        
+        <apex:define name="scripts">
+             <apex:insert name="pageScripts"/>
+        </apex:define> 
+        <apex:define name="bodyClose">        
+        </apex:define>
+    </apex:composition>
+    
+    <style>
+        .slds-card{
+        background-color: white;
+        }
+       .htmlDetailElementTable
+        {
+            border-collapse: inherit;
+        }
+    </style>
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" standardController="Contact">
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Salesforce Lightning Design System Trailhead Module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <apex:stylesheet value="{!URLFOR($Resource.SLDS214, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+</head>
+
+<body>
+
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="fonteva">
+
+    <div class="slds-col slds-no-flex slds-grid slds-align-top">
+        <a href="https://traininglatestorg.my.salesforce.com/servlet/servlet.su?oid=00Df4000001de6d&retURL=%2F003f4000004Fd8Y&sunetworkid=0DBf40000003Qfc&sunetworkuserid={!Contact.Customer_Portal_User__c}" target = '_blank'>
+        <button class="slds-button slds-button--neutral slds-m-left--medium">
+          Log in as Community User
+        </button>
+        </a>
+    </div>
+
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->
+
+  <!-- JAVASCRIPT -->
+  <!-- / JAVASCRIPT -->
+
+</body>
+</html>
+</apex:page>

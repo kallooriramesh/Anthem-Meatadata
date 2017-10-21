@@ -1,0 +1,119 @@
+<apex:page standardController="EventApi__Event__c"  extensions="EventTemplateSetupCtrl" >
+    
+    <apex:slds />
+    <apex:form id="frm" >
+        <div class="demo-only" style="height: 640px;" id="pg">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close" />
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!EventApi__Event__c.Name}</h2>
+                        
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                        <apex:pageMessages id="msg"></apex:pageMessages>
+                        <article  id="art">
+                            
+                                <div class="slds-card__body" >
+                                    <table class="slds-table slds-table_cell-buffer">
+                                        
+                                       
+                                        <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Invitation Template
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedInvitationTemplate}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!emailTemplateOpts}" />
+                                                    <!--<apex:actionSupport event="onchange" action="{!refreshEmailTemplateSection}" rerender="emailTemplateBlock" />-->
+                                                </apex:selectList>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Registration Template
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedRegistrationTemplate}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!emailTemplateOpts}" />
+                                                    <!--<apex:actionSupport event="onchange" action="{!refreshEmailTemplateSection}" rerender="emailTemplateBlock" />-->
+                                                </apex:selectList>
+                                            </td>
+                                        </tr>
+                                        
+                                         <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Reminder Template
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedReminderTemplate}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!emailTemplateOpts}" />
+                                                    <!--<apex:actionSupport event="onchange" action="{!refreshEmailTemplateSection}" rerender="emailTemplateBlock" />-->
+                                                </apex:selectList>
+                                            </td>
+                                        </tr>
+                                        
+                                         <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Followup Template
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedFollowupTemplate}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!emailTemplateOpts}" />
+                                                    <!--<apex:actionSupport event="onchange" action="{!refreshEmailTemplateSection}" rerender="emailTemplateBlock" />-->
+                                                </apex:selectList>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Thank You Template
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedFollowupTemplate}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!emailTemplateOpts}" />
+                                                    <!--<apex:actionSupport event="onchange" action="{!refreshEmailTemplateSection}" rerender="emailTemplateBlock" />-->
+                                                </apex:selectList>
+                                            </td>
+                                        </tr>
+                                       
+                                        
+                                        
+                                    </table>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                            
+                        </article>
+                        
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <apex:commandButton value="Cancel" action="{!ClosePopup}" rerender="msg,art" styleClass="slds-button slds-button_neutral"/>
+                        
+                        <apex:commandButton value="Save" action="{!Save}" rerender="msg" styleClass="slds-button slds-button_brand"/>
+                        
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        
+        
+        
+    </apex:form>
+    
+</apex:page>

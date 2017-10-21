@@ -1,0 +1,18 @@
+<apex:page controller="CreateEventCtrl">
+<apex:form >
+<apex:pageBlock >
+  <apex:pageBlockSection >
+      <apex:inputText label="Name" value="{!eventName}"/>
+        <apex:inputTextarea label="Description" value="{!description}"/>
+        <apex:selectList label="Type" value="{!type}" multiselect="false" size="1">
+         <apex:selectOption itemLabel="Meeting" itemValue="meeting"/>
+        <apex:selectOption itemLabel="Event" itemValue="event"/> 
+        </apex:selectList>
+      <apex:commandButton value="Save" action="{!Save}"/>
+      
+  </apex:pageBlockSection>
+</apex:pageBlock>
+{!eventResponse }
+{!eventUrl }
+</apex:form>
+</apex:page>

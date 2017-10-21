@@ -1,0 +1,38 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" controller="AdobeAttendiesSync" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="eventSyncResponce" type="AdobeResponse" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="event" type="sObject" />
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="messageTitle" type="String" default='' />
+    <aura:attribute name="messageText" type="String" default='' />
+    
+    <aura:if isTrue="{!and(v.messageTitle == 'ERROR', v.messageText != '')}" >
+       <div style="background: #a01c1c;color: white;font-weight: normal;">
+        {!v.messageText}
+        </div>
+        
+       
+    </aura:if>
+    <aura:if isTrue="{!if(v.messageTitle=='SUCCESS',true,false)}">
+     <div style="background: #155a15;color: white;font-weight: normal;">
+        {!v.messageText}
+        
+        </div>
+    </aura:if>
+    
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        
+        <div class="demo-only" style="height: 6rem;">
+            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                <span class="slds-assistive-text">syncing...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

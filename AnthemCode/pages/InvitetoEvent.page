@@ -1,0 +1,111 @@
+<apex:page standardController="Contact" recordSetVar="contacts" extensions="InvitetoEventCtrl"  sidebar="false" showHeader="false">
+    <script>
+    var stringvalue='{!selectedContactsCount}';
+    if(stringvalue==0)
+    {
+        alert('Please select at least one contact');
+    }
+    </script>
+    
+    <script>
+    var stringval='{!response}';
+    
+    alert({!response}')
+          if(stringval != '')
+    {
+        alert('Please select at least one event');
+    }
+    
+    
+    </script>
+    <script>
+    function hasEvent(eventid)
+    {
+        
+        alert(eventid);
+        if (typeof eventid === undefined || eventid == null || eventid == '')
+        {
+            alert('Please select an Event');
+            return false;
+        }else{
+            return true;
+        }
+    }
+    </script>
+    <apex:slds /> 
+    <apex:form id="frm" >   
+        <apex:pageMessages id="msg"></apex:pageMessages>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-contact" title="Contact">
+                            <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS214, 'assets/icons/standard-sprite/svg/symbols.svg#contact')}" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" >
+                                <span class="slds-text-heading_small">Contacts {!selectedContactsCount} </span>
+                            </a>
+                        </h2>
+                    </div>                  
+                </header>
+                
+                <apex:outputLabel >
+                    <span class="slds-text-heading_small">Event 
+                    </span>
+                </apex:outputLabel>&nbsp;&nbsp;
+                <apex:selectList value="{!selectedEvent}" style="align:cetner; width:200px"  multiselect="false" size="1"  styleClass="slds-input slds-combobox__input">
+                    <apex:selectOptions value="{!Events}"   />
+                    <apex:actionSupport event="onchange"  action="{!setInviteeContacts}" />
+                </apex:selectList>              
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="slds-no-flex"> 
+                    <apex:outputPanel >
+                        <apex:commandButton value="Invite" action="{!invite}" rerender="frm,msg" styleClass="slds-button slds-button_neutral"/>
+                    </apex:outputPanel>
+                    <apex:CommandButton Value="Back to Contacts" Action="{!save}" styleClass="slds-button slds-button_neutral"/>
+                </div>
+            </div>
+            <div class="slds-card__body">
+                <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-no-row-hover slds-table_cell-buffer">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <apex:repeat value="{!$ObjectType.Contact.FieldSets.Adobe_Event}" var="f" id="theRepeat">
+                                <apex:outputPanel id="thePanel" rendered="{!if(f.Type != 'id' , true,false)}">
+                                    
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="{!f.Label}">{!f.Label}</div>
+                                    </th>
+                                </apex:outputPanel>
+                            </apex:repeat>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!listViewContacts}" var="rec" id="recids">
+                            <tr>
+                                <apex:repeat value="{!$ObjectType.Contact.FieldSets.Adobe_Event}" var="f" id="recordsids">
+                                    <apex:outputPanel id="thePanel" rendered="{!if(f.Type != 'id' , true,false)}">
+                                        <td data-label="Account Name" style="{!if(f.Type == 'id' , 'visibility: hidden;','visibility:visible;')}">
+                                            <div class="slds-truncate" title="{!rec[f]}" style="{!if(f.Type == 'id' , 'visibility: hidden;','visibility:visible;')}">{!rec[f]}</div>
+                                        </td>
+                                    </apex:outputPanel>
+                                </apex:repeat>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="slds-card__footer">
+                <br/>
+            </footer>
+        </article>
+        
+    </apex:form>
+    
+    
+</apex:page>

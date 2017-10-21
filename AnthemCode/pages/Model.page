@@ -1,0 +1,100 @@
+<apex:page standardController="Contact" recordSetVar="contacts" extensions="InvitetoEventCtrl" >
+    
+    <apex:slds />
+    <apex:form id="frm" >
+        <apex:outputPanel id="OP11" rendered="{!show = true}"  >
+            <div class="demo-only" style="height: 640px;" id="pg">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close" />
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Event Invitation</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            
+                            <apex:pageMessages id="msg"></apex:pageMessages>
+                            <article class="slds-card" id="art">
+                                <div class="slds-card__header slds-grid">
+                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-contact" title="Contact">
+                                                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS214, 'assets/icons/standard-sprite/svg/symbols.svg#contact')}" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <h2>
+                                                <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" >
+                                                    <span class="slds-text-heading_small">Contacts {!selectedContactsCount} </span>
+                                                </a>
+                                            </h2>
+                                        </div>                  
+                                    </header>
+                                    
+                                    
+                                    <div class="slds-no-flex"> 
+                                        
+                                    </div>
+                                </div>
+                                <div class="slds-card__body" >
+                                    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-no-row-hover slds-table_cell-buffer">
+                                        <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Event</span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedEvent}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!Events}" />
+                                                    <apex:actionSupport event="onchange" action="{!setInviteeContacts}" />
+                                                </apex:selectList>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="slds-text-heading_small">Event Template
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <apex:selectList value="{!selectedEmailTemplate}" multiselect="false" size="1" styleClass="slds-input slds-combobox__input">
+                                                    <apex:selectOptions value="{!emailTemplateOpts}" />
+                                                    <apex:actionSupport event="onchange" action="{!refreshEmailTemplateSection}" rerender="emailTemplateBlock" />
+                                                </apex:selectList>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                                <footer class="slds-card__footer">
+                                    <br/>
+                                </footer>
+                            </article>
+                            
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <apex:commandButton value="Cancel" action="{!ClosePopup}" rerender="msg,art" styleClass="slds-button slds-button_neutral"/>
+                            
+                            <apex:commandButton value="Invite" action="{!DisplayIframe}" styleClass="slds-button slds-button_brand"/>
+                            
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </apex:outputPanel>
+        
+        
+        
+    </apex:form>
+    
+</apex:page>

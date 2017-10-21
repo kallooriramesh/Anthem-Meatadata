@@ -1,0 +1,49 @@
+<apex:page standardcontroller="Contact" recordSetVar="Contacts"  extensions="Contact_Controller"   id="pg" title="Contacts" sidebar="false" showHeader="false" standardStylesheets="false" applyHtmlTag="false" >
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapchdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+    
+    <script>
+    var j$= jQuery.noconflict();
+    </script>
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en" >
+       <head>
+           <apex:slds id="sds"/>
+        </head> 
+        <apex:form id="frm">
+            <div class="slds-align--absolute-center">
+            <apex:pageBlock id="pb">
+                <script>
+                function Checkevent()
+                {
+                    if(document.getElementById('pg:frm:pb:pbs1:eventname').value != '')
+                    {
+                        // return false   
+                    }
+                    
+                    else
+                        alert('Please select Event');                       
+                    </script>
+        <apex:pageblocksection id="pbs1">
+          <form class="slds-form-stacked">
+              <div class="slds-form-element">
+                  <label class="slds-form-element-label" for="eventname">Event</label>
+                  <div class="slds-form-element-control">
+                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:inputtext value="{!eventname}" id="eventname"/>    
+                  </div>
+              </div>
+            </form>      
+            <br/><br/><br/><br/>
+            <div class="slds-col Slds-no-flex slds-grid slds-align-top">
+                <div class="slds-buttn-group" role="group" style="padding-top:1.5 rem;">
+                    <apex:commandbutton value="Invite" styleclass="Slds-button Slds-button--neutral" action="{!send}"  onclick="Checkevent" rerender="frmid,pb,pbs1"/>
+                </div>
+            </div>
+                
+           </apex:pageblocksection>       
+                
+            </apex:pageBlock>
+            
+        </div>
+        </apex:form>
+    </html>
+</apex:page>

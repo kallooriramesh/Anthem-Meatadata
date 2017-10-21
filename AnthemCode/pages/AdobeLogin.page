@@ -1,0 +1,64 @@
+<apex:page controller="AdobeLoginCtrl">
+    <apex:form >
+        <apex:slds />
+        <center>
+            <br/>
+            <br/>
+            <table style="width:40%;border: 1px solid black;" >
+                <tr>
+                    <td style="padding: 10px;" colspan="2">
+                        <center>
+                            <b>Adobe Login</b>
+                        </center>
+                    </td>
+                    
+                </tr>
+                
+                <tr style="{!if(remoteSiteError == null, 'display:none','' )}">
+                    <td style="padding: 10px;color: #a01c1c;font-weight: normal;" colspan="2">
+                        <center>
+                           {!remoteSiteError}
+                        </center>
+                    </td>
+                    
+                </tr>
+                
+                <tr>
+                    <td style="padding: 10px;">
+                        <label class="slds-form-element__label" for="input-01">Username <span class="slds-required">*</span></label>
+                    </td>
+                    <td style="padding: 10px;">
+                        <apex:inputText value="{!username}" styleClass="slds-input"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="padding: 10px;">
+                        <label class="slds-form-element__label" for="input-01">Password <span class="slds-required">*</span></label>
+                    </td>
+                    <td style="padding: 10px;">
+                        <apex:inputText value="{!password}" styleClass="slds-input"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">
+                        <label class="slds-form-element__label" for="input-01">Domain Url <span class="slds-required">*</span></label>
+                    </td >
+                    <td style="padding: 10px;">
+                        <apex:inputText value="{!adobeUrl}" styleClass="slds-input"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;" colspan="2">
+                        <center>
+                            <apex:commandButton styleClass="slds-button slds-button_brand" value="Login" action="{!userlogin}"></apex:commandButton>
+                        </center>
+                    </td>
+                    
+                </tr>
+            </table>
+            
+            
+        </center>
+    </apex:form>
+</apex:page>
